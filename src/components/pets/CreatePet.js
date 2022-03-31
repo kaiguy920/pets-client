@@ -3,6 +3,7 @@ import { Form, Container, Button } from 'react-bootstrap'
 import { createPet } from '../../api/pets'
 import { createPetSuccess, createPetFailure } from '../shared/AutoDismissAlert/messages'
 import { useNavigate } from 'react-router-dom'
+import PetForm from '../shared/PetForm'
 
 // create pet renders a form and calls createPet function
 // maybe redirect(navigate) to the new pet show page
@@ -70,39 +71,12 @@ const CreatePet = (props) => {
     }
 
     return (
-        <Container className="justify-content-center">
-            <Form onSubmit={handleSubmit}>
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                    placeholder="what is your pet's name?"
-                    value={pet.name}
-                    name='name'
-                    onChange={handleChange}
-                />
-                <Form.Label>Type</Form.Label>
-                <Form.Control
-                    placeholder="what type of animal is your pet?"
-                    value={pet.type}
-                    name='type'
-                    onChange={handleChange}
-                />
-                <Form.Label>Age</Form.Label>
-                <Form.Control
-                    placeholder="what is your pet's age?"
-                    value={pet.age}
-                    type="number"
-                    name='age'
-                    onChange={handleChange}
-                />
-                <Form.Check
-                    label='is this pet adoptable?'
-                    name='adoptable'
-                    defaultChecked={pet.adoptable}
-                    onChange={handleChange}
-                />
-                <Button type='submit'>Submit</Button>
-            </Form>
-        </Container>
+        <PetForm
+            pet={pet}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            heading="Add new pet!"
+        />
     )
 }
 

@@ -7,7 +7,7 @@ const Home = (props) => {
 	return (
 		<>
 			<h2>Home Page</h2>
-			<IndexPets msgAlert={msgAlert} />
+			<IndexPets user={user} msgAlert={msgAlert} />
 		</>
 	)
 }

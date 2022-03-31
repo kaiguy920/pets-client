@@ -15,7 +15,7 @@ const cardContainerLayout = {
 
 const IndexPets = (props) => {
     const [pets, setPets] = useState(null)
-    const { msgAlert } = props
+    const { user, msgAlert } = props
 
     useEffect(() => {
         getAllPets()
