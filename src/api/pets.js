@@ -19,7 +19,7 @@ export const createPet = (user, newPet) => {
         headers: {
             Authorization: `Token token=${user.token}`
         },
-        data: newPet
+        data: { pet: newPet }
     })
 }
 
