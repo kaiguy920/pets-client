@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowPet from './components/pets/ShowPet'
+import CreatePet from './components/pets/CreatePet'
 
 const App = () => {
 
@@ -72,6 +73,10 @@ const App = () => {
 				<Route
 					path='/pets/:id'
 					element={<ShowPet msgAlert={msgAlert} user={user} />}
+				/>
+				<Route
+					path='/addPet'
+					element={<CreatePet msgAlert={msgAlert} user={user} />}
 				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
