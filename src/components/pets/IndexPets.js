@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getAllPets } from '../../api/pets'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 // I'm going to declare a style object
 // this will be used to corral my cards
@@ -42,7 +43,9 @@ const IndexPets = (props) => {
             <Card key={pet.id} style={{ width: '30%' }} className="m-2" >
                 <Card.Header>{pet.fullTitle}</Card.Header>
                 <Card.Body>
-                    <Card.Text>{pet.name}</Card.Text>
+                    <Card.Text>
+                        <Link to={`/pets/${pet.id}`}>View {pet.name}</Link>
+                    </Card.Text>
                 </Card.Body>
             </Card>
         ))
