@@ -12,19 +12,16 @@ export const getOnePet = (petId) => {
 }
 
 // POST -> create function
-
 export const createPet = (user, newPet) => {
     return axios({
         url: `${apiUrl}/pets`,
         method: 'POST',
         headers: {
-            Authorizations: `Token token=${user.token}`,
+            Authorization: `Token token=${user.token}`
         },
         data: newPet
     })
 }
-
-
 
 // PATCH -> update function
 
