@@ -71,15 +71,16 @@ const App = () => {
 						</RequireAuth>}
 				/>
 				<Route
-					path='/pets/:id'
-					element={<ShowPet msgAlert={msgAlert} user={user} />}
-				/>
-				<Route
 					path='/addPet'
 					element={
 						<RequireAuth user={user}>
 							<CreatePet msgAlert={msgAlert} user={user} />
-						</RequireAuth>}
+						</RequireAuth>
+					}
+				/>
+				<Route
+					path='/pets/:id'
+					element={<ShowPet msgAlert={msgAlert} user={user} />}
 				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
