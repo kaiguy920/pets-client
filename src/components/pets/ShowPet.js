@@ -5,6 +5,7 @@ import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import { showPetSuccess, showPetFailure } from '../shared/AutoDismissAlert/messages'
 import EditPetModal from './EditPetModal'
 import ShowToy from '../toys/ShowToy'
+import GiveToyModal from '../toys/GiveToyModal'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -16,6 +17,7 @@ const ShowPet = (props) => {
 
     const [pet, setPet] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
+    const [toyModalOpen, setToyModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const { user, msgAlert } = props
     const { id } = useParams()
@@ -64,7 +66,12 @@ const ShowPet = (props) => {
     if (pet) {
         if (pet.toys.length > 0) {
             toyCards = pet.toys.map(toy => (
-                <ShowToy key={toy.id} toy={toy} />
+                // need to pass all props needed for updateToy func in edit modal
+                <ShowToy
+                    key={toy._id} toy={toy} pet={pet}
+                    user={user} msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
             ))
         }
     }
@@ -94,6 +101,9 @@ const ShowPet = (props) => {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
+                        <Button onClick={() => setToyModalOpen(true)} className="m-2" variant="info">
+                            Give Pet a Toy?
+                        </Button>
                         <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                             Edit Pet
                         </Button>
@@ -115,6 +125,14 @@ const ShowPet = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 updatePet={updatePet}
                 handleClose={() => setModalOpen(false)}
+            />
+            <GiveToyModal
+                pet={pet}
+                show={toyModalOpen}
+                user={user}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setToyModalOpen(false)}
             />
         </>
     )
