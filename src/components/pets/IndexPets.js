@@ -46,7 +46,7 @@ const IndexPets = (props) => {
     let petCards
 
     if (pets.length > 0) {
-        // petsJsx = pets.map(pet => (
+        // petsJsx = pets(pet => (
         //     <li key={pet.id}>
         //         {pet.fullTitle}
         //     </li>

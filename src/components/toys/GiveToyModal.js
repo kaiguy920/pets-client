@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import ToyForm from '../shared/ToyForm'
-import { giveToy } from '../../api/toys.js'
+import { giveToy } from '../../api/toys'
 
 const GiveToyModal = (props) => {
     const { user, pet, show, handleClose, msgAlert, triggerRefresh } = props
